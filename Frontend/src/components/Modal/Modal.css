@@ -1,0 +1,105 @@
+/* Modal Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Modal Overlay - BACKGROUND BLUR IS HERE */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px); /* ← CHANGE THIS VALUE TO ADJUST BLUR */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modalCont{
+    width: 90%;
+}
+
+.modalContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+}
+
+.modalContent h1{
+    font-size: 2.5rem;
+    letter-spacing: -2.5px;
+}
+
+.modalContent span{
+    color: var(--accentColor);
+}   
+
+.modalContent p{
+    margin-top: -10px;
+    font-style: italic;
+    color: var(--subcolor);
+    letter-spacing: -1.5px;
+    font-size: 1.2rem;
+}
+
+.databtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    
+}
+
+.databtns button{
+    background: var(--accentColor);
+    color: white;
+    font-family: var(--font-mono);
+    border : none;
+    letter-spacing: -1px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.databtns button:hover{
+    background: var(--accentColorHover);
+}
+
+.results{
+    padding: 15px;
+}
+
+.results h1{
+    font-size: 3rem;
+    margin-bottom: 35px;
+}
+
+.results p{
+    font-size: 1.3rem;
+}
