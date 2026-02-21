@@ -8,7 +8,7 @@ import ParticleBackground from '../ParticleBackground/ParticleBackground';
 
 const Layout = () => {
   const location = useLocation();
-  const hideNavRoutes = [ '/upload']; // add more auth routes if needed
+  const hideNavRoutes = [ '/upload', '/results' ]; // add more auth routes if needed
   const shouldHideNav = hideNavRoutes.includes(location.pathname);
   
   return (
