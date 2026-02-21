@@ -125,10 +125,11 @@ def processImage(filepath):
 
 if __name__ == '__main__':
     # Load class names.
-    # classesFile = "coco.names"
+    classesFile = "coco.names"
     classes = None
-    # with open(classesFile, 'rt') as f:
-    #     classes = f.read().rstrip('\n').split('\n')
+    with open(classesFile, 'rt') as f:
+        classes = f.read().replace("'","").split('\n')
+
     cwd = os.getcwd()
     for f in glob.glob('TestImages/*.jpg'):
         img = processImage(f)
