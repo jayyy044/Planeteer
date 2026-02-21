@@ -2,13 +2,15 @@ import cv2
 import random
 import numpy as np
 from flask import Flask, send_file
+import glob
+import os
 
 # Constants.
 INPUT_WIDTH = 640
 INPUT_HEIGHT = 640
-SCORE_THRESHOLD = 0.5
-NMS_THRESHOLD = 0.45
-CONFIDENCE_THRESHOLD = 0.45
+SCORE_THRESHOLD = 0.01
+NMS_THRESHOLD = 0.01
+CONFIDENCE_THRESHOLD = 0.01
  
 # Text parameters.
 FONT_FACE = cv2.FONT_HERSHEY_SIMPLEX
@@ -115,9 +117,11 @@ def processImage(filepath):
     t, _ = net.getPerfProfile()
     label = 'Inference time: %.2f ms' % (t * 1000.0 /  cv2.getTickFrequency())
     print(label)
-    cv2.putText(img, label, (20, 40), FONT_FACE, FONT_SCALE,  (0, 0, 255), THICKNESS, cv2.LINE_AA)
+    #cv2.putText(img, label, (20, 40), FONT_FACE, FONT_SCALE,  (0, 0, 255), THICKNESS, cv2.LINE_AA)
 
-    cv2.imwrite('output.jpg', img)
+    #cv2.imwrite('output.jpg', img)
+
+    return img
 
 if __name__ == '__main__':
     # Load class names.
@@ -125,7 +129,12 @@ if __name__ == '__main__':
     classes = None
     # with open(classesFile, 'rt') as f:
     #     classes = f.read().rstrip('\n').split('\n')
-    processImage("testImage.jpg")
+    cwd = os.getcwd()
+    for f in glob.glob('TestImages/*.jpg'):
+        img = processImage(f)
+        cv2.imwrite("TestOutputs/" + os.path.basename(f), img)
+
+
 
 
 
