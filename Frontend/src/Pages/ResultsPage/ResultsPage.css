@@ -1,0 +1,60 @@
+.results-page-cont{
+    display: flex;
+    height: 97vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--font-mono);
+    color: white;
+}
+
+.results-page{
+    width: 60%;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+}
+.results-page h1 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: -1px;
+    text-align: center;
+}
+.titles{
+    font-size: 1.5rem;
+    color: var(--accentColor);
+    margin: 0;
+    font-weight: 600;
+}
+
+.information{
+    line-height: 24px;
+}
+
+.results-page button{
+    border-radius: 8px;
+    padding: 10px;
+    padding-inline: 20px;
+    color: white;
+    margin-top: 25px;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 300 !important;
+    border: none;
+    cursor: pointer;
+    background: var(--accentColor);
+    width: fit-content;
+    transition: all 0.3s ease;
+    align-self: center;
+
+}
+
+.results-page button:hover{
+    background: var(--accentColorHover);
+}
