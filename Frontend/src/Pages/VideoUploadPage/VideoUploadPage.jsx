@@ -39,14 +39,14 @@ const handleFileChange = (e) => {
     e.preventDefault();
     setIsDragging(false);
     const file = e.dataTransfer.files?.[0];
-    if (file && file.type.startsWith("video/")) {
+    if (file && file.type.startsWith("image/")) {
       if (file.size > 20 * 1024 * 1024) {
         alert("File exceeds 20MB limit.");
         return;
       }
       setUploadedFile(file);
     } else {
-      alert("Only video files are allowed.");
+      alert("Only image files are allowed.");
     }
   };
 
@@ -83,10 +83,32 @@ const handleFileChange = (e) => {
         },
         body: formData,
       });
-      const data = await response.json();
-      console.log("Colab response:", data);
-      navigate('/results', { state: { disease: data.disease, causes: data.causes, elimination: data.elimination, prevention: data.prevention } });
+      //const data = await response.json();
+      //console.log("Colab response:", data);
+      //navigate('/results', { state: { disease: data.disease, causes: data.causes, elimination: data.elimination, prevention: data.prevention } });
+      const text = await response.text();
+      console.log("Raw response:", text);
 
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        alert("Backend did not return JSON. Check console Raw response.");
+        return;
+      }
+
+      if (!response.ok) {
+        alert(data.message || "Backend error");
+        return;
+      }
+
+      navigate('/results', { state: {
+        disease: data.disease,
+        causes: data.causes,
+        elimination: data.elimination,
+        prevention: data.prevention,
+        annotatedImageB64: data.annotated_image_b64
+      }});
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to connect to Colab.");

@@ -1,15 +1,18 @@
 .results-page-cont{
     display: flex;
-    height: 97vh;
-    justify-content: center;
+    height: 100vh;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     font-family: var(--font-mono);
     color: white;
+    padding: 40px 20px 100px 20px;   
+    overflow-y: auto;
+    
 }
 
 .results-page{
-    width: 60%;
+    width: min(900px, 90%);  
     border-radius: 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: rgba(0, 0, 0, 0.8);
@@ -17,8 +20,9 @@
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     display: flex;
     /* align-items: center; */
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
+    margin-bottom: 60px;
 }
 .results-page h1 {
     font-size: 2rem;
@@ -57,4 +61,19 @@
 
 .results-page button:hover{
     background: var(--accentColorHover);
+}
+
+.annotated-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.annotated-image {
+    max-width: 350px;   /* 🔥 smaller image */
+    width: 100%;
+    height: auto;
+    max-height: 240px;        /* ✅ prevents huge vertical image */
+    object-fit: contain; 
+    border-radius: 12px;
 }
