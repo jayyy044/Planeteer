@@ -23,5 +23,5 @@ mkdir plantseg/labels/val
 #Format annotations
 python3 convert.py
 
+#Train Model
 yolo segment train data=data.yaml model=$model epochs=$epochs imgsz=$imgsz
-
