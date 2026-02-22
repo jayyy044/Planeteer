@@ -12,4 +12,4 @@ Dataset: Wei, T., Chen, Z., Yu, X. et al. A Large-Scale In-the-wild Dataset for 
 
 ### Demonstration Video
 
-In the Demo folder there are pictures and a video of how our program works!
+In the Demo folder there are pictures and a video of how our program works, you must download the raw file to watch the video.
