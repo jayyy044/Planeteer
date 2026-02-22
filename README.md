@@ -27,3 +27,7 @@ YOLO model: Sapkota, Ranjan et al. “YOLO26: Key Architectural Enhancements and
 ### Demonstration Video
 
 In the Demo folder there are pictures and a video of how our program works, you must download the raw file to watch the video.
+
+### Google Colab Backend
+
+https://colab.research.google.com/drive/1HaUfj3QqCqKaMpDSlnWdMfC_ll9dZMeO?usp=sharing
