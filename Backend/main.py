@@ -4,6 +4,7 @@ import numpy as np
 from flask import Flask, send_file
 import glob
 import os
+from ultralytics import YOLO
 
 # Constants.
 INPUT_WIDTH = 640
@@ -105,7 +106,29 @@ def processImage(filepath):
     # Load image.
     frame = cv2.imread(filepath)
     # Give the weight files to the model and load the network using       them.
-    modelWeights = "best.onnx"
+
+
+    modelWeights = "best.pt"
+    model = YOLO(modelWeights)
+
+    result = model(filepath)
+
+    result[0].save(filename="result.jpg")
+    prob = result[0].boxes
+    confidences = prob.conf
+    classes = prob.cls
+
+    topIdx = confidences.argmax()
+
+    confidence = float(confidences[topIdx])
+    topClassID = int(classes[topIdx])
+    topResult = model.names[topClassID]
+
+    print(confidence)
+    print(topResult)
+
+    exit()
+
     net = cv2.dnn.readNet(modelWeights)
     # Process image.
     detections = pre_process(frame, net)
@@ -133,7 +156,8 @@ if __name__ == '__main__':
     cwd = os.getcwd()
     for f in glob.glob('TestImages/*.jpg'):
         img = processImage(f)
-        cv2.imwrite("TestOutputs/" + os.path.basename(f), img)
+
+        #cv2.imwrite("TestOutputs/" + os.path.basename(f), img)
 
 
 
